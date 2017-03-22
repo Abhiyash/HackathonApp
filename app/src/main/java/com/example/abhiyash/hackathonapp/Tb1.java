@@ -144,7 +144,8 @@ public class Tb1 extends AppCompatActivity
                 }
                 else
                 {
-                    Toast.makeText(Tb1.this, "Record Found", Toast.LENGTH_SHORT).show();
+                   Intent it=new Intent(Tb1.this,Tb2.class);
+                    startActivity(it);
                 }
             }
             catch (Exception e)

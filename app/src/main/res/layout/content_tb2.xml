@@ -13,4 +13,10 @@
     tools:context="com.example.abhiyash.hackathonapp.Tb2"
     tools:showIn="@layout/app_bar_tb2">
 
+    <CheckedTextView
+        android:text="CheckedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/checkedTextView" />
 </RelativeLayout>
