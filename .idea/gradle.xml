@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ksoap2-j2se-full-2.1.2" />
+            <option value="$PROJECT_DIR$/mysql-connector-java-5.1.6-bin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

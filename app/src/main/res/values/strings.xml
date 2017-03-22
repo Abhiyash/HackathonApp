@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_tb1">Tb1</string>
+    <string name="title_activity_wl1">WL1</string>
+    <string name="title_activity_c1">C1</string>
+    <string name="title_activity_tb2">Tb2</string>
 </resources>

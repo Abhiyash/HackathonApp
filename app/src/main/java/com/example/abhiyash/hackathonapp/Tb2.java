@@ -2,7 +2,6 @@ package com.example.abhiyash.hackathonapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -14,39 +13,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-public class Tb1 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
-    EditText e1;
-    Button b1;
-    String s1="",s2="";
-    String url="http://10.0.2.2:48278/WebApplication1/NewWebService?WSDL";
-    String ns="http://abc/";
-    String mname="fetchbagno";
-    String SOAP_ACTION="http://abc/fetchbagno";
-
+public class Tb2 extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tb1);
+        setContentView(R.layout.activity_tb2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,14 +33,6 @@ public class Tb1 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        e1=(EditText)findViewById(R.id.editText);
-        b1=(Button)findViewById(R.id.button4);
-        b1.setOnClickListener(this);
-
-        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-
     }
 
     @Override
@@ -79,7 +48,7 @@ public class Tb1 extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.tb1, menu);
+        getMenuInflater().inflate(R.menu.tb2, menu);
         return true;
     }
 
@@ -122,39 +91,5 @@ public class Tb1 extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-        s1=e1.getText().toString();
-        try{
-            SoapObject msg=new SoapObject(ns,mname);
-            msg.addProperty("ticket_id",s1);
-            SoapSerializationEnvelope ev=new SoapSerializationEnvelope(SoapEnvelope.VER11);
-            ev.setOutputSoapObject(msg);
-            HttpTransportSE ttp=new HttpTransportSE(url);
-            try{
-                ttp.call(SOAP_ACTION,ev);
-                SoapPrimitive sp=(SoapPrimitive)ev.getResponse();
-                String s2="";
-                s2+=sp.toString();
-                if(s2.equals("Record not Found"))
-                {
-                    Toast.makeText(Tb1.this, "Record not Found", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(Tb1.this, "Record Found", Toast.LENGTH_SHORT).show();
-                }
-            }
-            catch (Exception e)
-            {
-                Toast.makeText(Tb1.this, ""+e, Toast.LENGTH_SHORT).show();
-            }
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(Tb1.this, ""+e, Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':mysql-connector-java-5.1.6-bin', ':ksoap2-j2se-full-2.1.2'

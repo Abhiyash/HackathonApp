@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HackathonApp.iml" filepath="$PROJECT_DIR$/HackathonApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ksoap2-j2se-full-2.1.2/ksoap2-j2se-full-2.1.2.iml" filepath="$PROJECT_DIR$/ksoap2-j2se-full-2.1.2/ksoap2-j2se-full-2.1.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysql-connector-java-5.1.6-bin/mysql-connector-java-5.1.6-bin.iml" filepath="$PROJECT_DIR$/mysql-connector-java-5.1.6-bin/mysql-connector-java-5.1.6-bin.iml" />
     </modules>
   </component>
 </project>

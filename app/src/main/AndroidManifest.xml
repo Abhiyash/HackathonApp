@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.abhiyash.hackathonapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,13 +20,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Tb1" />
-        <activity android:name=".WL1" />
-        <activity android:name=".C1"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <!--
+     ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Tb1"
+            android:label="@string/title_activity_tb1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WL1"
+            android:label="@string/title_activity_wl1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".C1"
+            android:label="@string/title_activity_c1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Tb2"
+            android:label="@string/title_activity_tb2"
+            android:parentActivityName=".Tb1"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.abhiyash.hackathonapp.Tb1" />
+        </activity>
     </application>
 
 </manifest>
