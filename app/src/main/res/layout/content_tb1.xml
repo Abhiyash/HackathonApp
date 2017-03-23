@@ -13,27 +13,33 @@
     tools:context="com.example.abhiyash.hackathonapp.Tb1"
     tools:showIn="@layout/app_bar_tb1">
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Ticket_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <EditText
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:hint="Ticket ID"
+            android:layout_below="@+id/Ticket_id"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="60dp" />
+    </android.support.design.widget.TextInputLayout>
+
     <Button
         android:text="Track Baggage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
 
-        android:layout_marginLeft="66dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="19dp"
-        android:id="@+id/button4" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="79dp"
-        android:id="@+id/editText"
-        android:hint="Ticket ID"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4" />
+        android:layout_marginTop="34dp"
+        android:id="@+id/button4"
+        android:layout_below="@+id/Ticket_id"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
