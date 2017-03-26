@@ -13,10 +13,45 @@
     tools:context="com.example.abhiyash.hackathonapp.Tb2"
     tools:showIn="@layout/app_bar_tb2">
 
-    <CheckedTextView
-        android:text="CheckedTextView"
+    <CheckBox
+        android:text="Your Baggage is being processed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/checkedTextView" />
+        android:layout_marginTop="88dp"
+        android:checked="false"
+        android:clickable="false" />
+
+    <CheckBox
+        android:text="Your Baggage has been loaded onto the plane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:clickable="false"
+            android:id="@+id/checkBox2" />
+
+    <CheckBox
+        android:text="You can claim your baggage at counter no:-"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/checkBox3"
+        android:layout_below="@+id/checkBox2"
+        android:layout_centerHorizontal="true"
+        android:clickable="false"/>
+
+    <TextView
+        android:text="Baggage History/Timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="24sp"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

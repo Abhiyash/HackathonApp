@@ -18,6 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
@@ -39,7 +45,7 @@ public class Tb1 extends AppCompatActivity
     String ns="http://abc/";
     String mname="fetchbagno";
     String SOAP_ACTION="http://abc/fetchbagno";
-
+    Firebase fb,fb1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +68,9 @@ public class Tb1 extends AppCompatActivity
 
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
-
+        Firebase.setAndroidContext(this);
+        fb=new Firebase("https://hackathonapp-52b62.firebaseio.com/");
+        fb1=new Firebase("https://hackathonapp-52b62.firebaseio.com/ticketandbagno");
     }
 
     @Override
@@ -127,6 +134,9 @@ public class Tb1 extends AppCompatActivity
     @Override
     public void onClick(View v) {
         s1=e1.getText().toString();
+            check();
+        //This code is for webservice
+        /*
         try{
             SoapObject msg=new SoapObject(ns,mname);
             msg.addProperty("ticket_id",s1);
@@ -156,6 +166,54 @@ public class Tb1 extends AppCompatActivity
         catch (Exception e)
         {
             Toast.makeText(Tb1.this, ""+e, Toast.LENGTH_SHORT).show();
+        }*/
+
+    }
+    public void check(){
+        //int flag=0;
+        try {
+            com.firebase.client.Query q = fb1.orderByKey();
+            q.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int flag=0;
+                    for(DataSnapshot sn:dataSnapshot.getChildren())
+                    {
+                         Ticketidchecker t1=sn.getValue(Ticketidchecker.class);
+                           String s2=t1.getTicket_id();
+                        if(flag==0)
+                        {
+                            if (s2.equals(s1))
+                            {
+                                Intent it1 = new Intent(Tb1.this, Tb2.class);
+                                it1.putExtra("baggage_id", t1.baggage_id);
+                                startActivity(it1);
+                                flag++;
+                                break;
+
+                            }
+
+
+
+                        }
+
+                        System.out.println(flag);
+                    }
+                    if(flag==0)
+                    {
+                        Toast.makeText(Tb1.this, "Invalid ticke id", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
         }
+             catch (Exception e) {
+            Toast.makeText(Tb1.this, "" + e, Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
