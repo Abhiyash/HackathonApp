@@ -1,9 +1,15 @@
 package com.example.abhiyash.hackathonapp;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -56,12 +62,12 @@ public class Tb2 extends AppCompatActivity
         c2=(CheckBox)findViewById(R.id.checkBox2);
         c3=(CheckBox)findViewById(R.id.checkBox3);
         tv=(TextView)findViewById(R.id.textView2);
-
         Firebase.setAndroidContext(this);
 
         fb=new Firebase("https://hackathonapp-52b62.firebaseio.com/ScanningHistory");
 
        select();
+       //startService(new Intent(this,MyService.class));
     }
 
     @Override
@@ -176,7 +182,18 @@ public void select()
                             {
                                 c1.setChecked(true);
                                 Toast.makeText(Tb2.this, s2+""+s3, Toast.LENGTH_SHORT).show();
-
+                                Intent it23=new Intent(Tb2.this,Tb2.class);
+                                PendingIntent pd=PendingIntent.getActivities(Tb2.this,123, new Intent[]{it23},0);
+                                NotificationCompat.Builder b=new NotificationCompat.Builder(Tb2.this);
+                                b.setTicker("This is ticker message");
+                                b.setSmallIcon(R.drawable.checked);
+                                b.setContentTitle("This is title");
+                                b.setAutoCancel(true);
+                                b.setContentIntent(pd);
+                                Notification nf=b.build();
+                                NotificationManager nm=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+                                nm.notify(1,nf);
+                                finish();
                                // c1.isSelected(true);
                             }
                         if(s3.equals("201"))

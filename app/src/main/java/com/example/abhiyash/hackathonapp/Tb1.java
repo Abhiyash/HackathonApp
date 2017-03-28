@@ -1,6 +1,8 @@
 package com.example.abhiyash.hackathonapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
@@ -170,6 +172,7 @@ public class Tb1 extends AppCompatActivity
 
     }
     public void check(){
+        //String bid="";
         //int flag=0;
         try {
             com.firebase.client.Query q = fb1.orderByKey();
@@ -186,6 +189,7 @@ public class Tb1 extends AppCompatActivity
                             if (s2.equals(s1))
                             {
                                 Intent it1 = new Intent(Tb1.this, Tb2.class);
+
                                 it1.putExtra("baggage_id", t1.baggage_id);
                                 startActivity(it1);
                                 flag++;
@@ -214,6 +218,13 @@ public class Tb1 extends AppCompatActivity
              catch (Exception e) {
             Toast.makeText(Tb1.this, "" + e, Toast.LENGTH_SHORT).show();
         }
+        Ticketidchecker tid=new Ticketidchecker();
+
+        SharedPreferences msh=getSharedPreferences("My", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor edit=msh.edit();
+        edit.putString("Ticket_id",s1);
+        edit.putString("Baggage_id",tid.baggage_id);
+        edit.commit();
 
     }
 }
