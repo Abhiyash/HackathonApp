@@ -2,6 +2,7 @@ package com.example.abhiyash.hackathonapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -51,6 +52,9 @@ public class WL1 extends AppCompatActivity
         e2=(EditText)findViewById(R.id.editText3);
         b1=(Button)findViewById(R.id.button5);
         b1.setOnClickListener(this);
+
+        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
